@@ -76,7 +76,6 @@ module RedactorRails
     # Convert nested Hash to HashWithIndifferentAccess and replace
     # file upload hash with UploadedFile objects
     def self.normalize_param(*args)
-      binding.pry
       value = args.first
       return UploadedFile.new(value) if Hash === value && value.has_key?(:tempfile)
 

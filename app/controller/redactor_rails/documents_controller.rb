@@ -11,15 +11,16 @@ class RedactorRails::DocumentsController < ApplicationController
     @document = RedactorRails.document_model.new
 
     file = params[:file]
-    binding.pry
+
     @document.data = RedactorRails::Http.normalize_param(file, request)
+
     if @document.has_attribute?(:"#{RedactorRails.devise_user_key}")
       @document.send("#{RedactorRails.devise_user}=", redactor_current_user)
       @document.assetable = redactor_current_user
     end
 
     if @document.save
-      render :text => { :filelink => @document.url, :filename => @document.filename }.to_json
+      render text: { filelink: @document.url, filename: @document.filename }.to_json
     else
       render json: { error: @document.errors }
     end
