@@ -8,3 +8,5 @@
 //= require redactor-rails/plugins/table
 //= require redactor-rails/plugins/imagemanager
 //= require redactor-rails/plugins/filemanager
+//= require redactor-rails/plugins/limiter
+//= require redactor-rails/plugins/counter
